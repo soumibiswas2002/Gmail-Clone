@@ -1,9 +1,10 @@
 import React from 'react'
 import { Pencil, Star, Clock, File, SendHorizontal, ChevronDown } from 'lucide-react';
+import { MdInbox } from 'react-icons/md';
 
 const sidebarItem = [
   {
-    icon:<Pencil size={20} />,
+    icon:<MdInbox size={20} />,
     text: "Inbox"
   },
   {
