@@ -12,9 +12,12 @@ import {
 } from "react-icons/md";
 import { BiArchiveIn } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Mail = () => {
   const navigate = useNavigate();
+  const {selectedEmail} = useSelector((store)=>store.appSlice);
+  
   return (
     <div className="flex-1 bg-white rounded-xl mx-5">
       <div className="flex items-center justify-between px-4">
@@ -60,19 +63,19 @@ const Mail = () => {
       <div className="h-[90vh] overflow-y-auto p-4">
         <div className="flex items-center justify-between bg-white gap-1">
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-sans">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, vel.</h1>
+            <h1 className="text-xl font-sans">{selectedEmail?.subject}</h1>
             <span className="bg-gray-200 text-gray-500 px-2 rounded-md text-sm">Inbox x</span>
           </div>
           <div className="flex-none text-gray-400 my-5 text-sm">
-            <p>12-08-2024</p>
+            <p>{new Date(selectedEmail?.createdAt?.seconds*1000).toUTCString()}</p>
           </div>
         </div>
         <div className="text-gray-500 text-sm">
-          <h1>jhon.bow2002@gmail.com</h1>
+          <h1>{selectedEmail?.to}</h1>
           <span>to me</span>
         </div>
         <div className="my-10">
-          <p>message</p>
+          <p>{selectedEmail?.message}</p>
         </div>
 
       </div>
